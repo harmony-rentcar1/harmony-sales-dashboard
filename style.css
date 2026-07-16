@@ -1,0 +1,287 @@
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Noto Sans KR",sans-serif;background:#dfe5e8;color:#111}
+.app{display:flex;gap:24px;align-items:flex-start;padding:24px}
+.panel{width:380px;background:#fff;border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.08);position:sticky;top:24px;max-height:calc(100vh - 48px);overflow:auto}
+.panel h1{margin:0 0 8px;font-size:26px}.sub{margin:0 0 20px;color:#666;font-size:14px;line-height:1.45}
+label{display:block;margin-bottom:14px}label span{display:block;font-size:13px;font-weight:800;margin-bottom:6px}
+input,select,button{width:100%;border:1px solid #cdd4d8;border-radius:12px;padding:12px 14px;font-size:15px;background:#fff}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.option-head{display:flex;align-items:end;justify-content:space-between;margin:14px 0 10px}.option-head small{color:#777;font-size:12px}
+.primary-btn{margin-top:12px;background:#0c4b86;color:#fff;border:none;font-weight:800;cursor:pointer}
+.hint{margin:10px 0 0;font-size:12px;color:#666;line-height:1.5}
+.preview-wrap{flex:1;overflow:auto}.preview-scale{width:100%;display:flex;justify-content:center}
+
+/* 기준 이미지(872 x 2048)에 맞춘 포스터 */
+.poster{
+  width:872px;
+  background:#fff;
+  box-shadow:0 20px 45px rgba(0,0,0,.18);
+  overflow:hidden;
+}
+
+/* 상단: 배경은 442px까지만, 아래는 흰색으로 차량이 걸쳐 보이게 */
+.hero{
+  position:relative;
+  height:575px;
+  background:#fff;
+  overflow:hidden;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  right:0;
+  height:442px;
+  background:
+    linear-gradient(rgba(0,205,199,.28),rgba(0,171,201,.28)),
+    url("images/backgrounds/template_bg.jpg");
+  background-size:cover;
+  background-position:center top;
+  z-index:0;
+}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none}
+
+.date{
+  position:absolute;
+  top:20px;
+  right:24px;
+  z-index:4;
+  font-size:22px;
+  font-weight:800;
+}
+.title{
+  position:absolute;
+  top:92px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:4;
+  font-size:62px;
+  font-weight:900;
+  line-height:1;
+  white-space:nowrap;
+  letter-spacing:-2px;
+}
+.trim-pill{
+  position:absolute;
+  top:176px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:4;
+  background:#0d4d89;
+  color:#fff;
+  min-width:500px;
+  text-align:center;
+  font-size:27px;
+  font-weight:900;
+  padding:10px 38px 11px;
+  border-radius:18px;
+  white-space:nowrap;
+}
+.car-image{
+  position:absolute;
+  z-index:3;
+  width:700px;
+  left:50%;
+  top:270px;
+  transform:translateX(-50%);
+  filter:drop-shadow(0 15px 10px rgba(0,0,0,.22));
+}
+
+/* 가격 박스 */
+.price-box{
+  margin:8px 31px 0;
+  background:#e8e2dc;
+  border-radius:8px;
+  padding:19px 17px 20px;
+}
+.spec-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  column-gap:60px;
+  row-gap:16px;
+  margin-bottom:16px;
+}
+.spec-item{
+  display:grid;
+  grid-template-columns:17px auto 1fr;
+  align-items:center;
+  column-gap:12px;
+  min-height:34px;
+  font-size:30px;
+}
+.spec-item strong{font-weight:900;white-space:nowrap}
+.spec-value{text-align:right;font-weight:500;white-space:nowrap}
+.dot{width:14px;height:14px;border-radius:50%;background:#00599e}
+.blank{visibility:hidden}
+.rent-strip{
+  position:relative;
+  background:#fff;border-radius:8px;padding:13px 18px 12px;
+  display:grid;grid-template-columns:1fr 1fr;column-gap:38px;
+  box-shadow:inset 0 2px 6px rgba(0,0,0,.08);
+  overflow:hidden;
+}
+/* 보증금 뒤 배경 숫자 제거 */
+.rent-strip::before{
+  content:none;
+}
+.rent-item{position:relative;z-index:1;display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:18px}
+.rent-item strong{
+  font-size:30px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.accent{
+  color:#b11212;
+  font-weight:800;
+  font-size:32px;
+  text-align:right;
+  white-space:nowrap;
+  letter-spacing:-0.5px;
+}
+
+/* 옵션 타이틀 */
+.section-title{
+  display:flex;align-items:center;gap:43px;
+  margin:70px 45px 46px;
+}
+.section-title span{flex:1;height:2px;background:#999}
+.section-title h2{margin:0;font-size:34px;font-weight:900}
+
+/* 옵션 영역: 기준 이미지처럼 좌측 이미지 + 우측 제목/내용 */
+.options-area{padding:0 44px}
+.option-card{
+  display:grid;
+  grid-template-columns:210px 1fr;
+  gap:24px;
+  margin-bottom:46px;
+  align-items:start;
+}
+.option-card.hidden{display:none}
+.option-thumb-img{
+  width:210px;height:160px;object-fit:cover;
+  border-radius:0 0 25px 0;
+  display:block;background:#111;
+}
+.option-copy h3{
+  margin:0 0 10px;color:#b11212;
+  font-size:34px;font-weight:900;letter-spacing:-1.5px;
+}
+.option-copy p{
+  margin:0;
+  color:#444;
+  font-size:16px;
+  line-height:1.48;
+  word-break:keep-all;
+  white-space:pre-line;
+}
+
+/* 혜택 영역 */
+.benefits{
+  margin-top:38px;
+  padding:28px 34px 40px;
+  background:#d9e7e8;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  align-items:stretch;
+}
+.benefit{
+  background:#fff;
+  min-height:220px;
+  position:relative;
+  padding:0;
+  overflow:hidden;
+}
+.benefit-badge{
+  position:absolute;
+  top:0;
+  left:0;
+  width:90px;
+  height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#b10007;
+  color:#fff;
+  font-weight:900;
+  font-size:27px;
+  z-index:2;
+}
+.benefit-body{
+  min-height:220px;
+  display:grid;
+  grid-template-columns:135px 1fr;
+  align-items:center;
+  justify-items:center;
+  column-gap:10px;
+  padding:58px 28px 22px 26px;
+}
+.benefit-photo{
+  width:112px;
+  height:112px;
+  object-fit:contain;
+  display:block;
+  justify-self:center;
+}
+.benefit-text{
+  color:#005aa0;
+  font-size:33px;
+  font-weight:900;
+  line-height:1.28;
+  text-align:center;
+  word-break:keep-all;
+  justify-self:center;
+  align-self:center;
+}
+
+
+.option-input-list label{position:relative}
+.option-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:8px;
+  align-items:end;
+  margin-bottom:14px;
+}
+.option-row label{margin-bottom:0}
+.remove-option-btn{
+  width:42px;
+  height:42px;
+  padding:0;
+  border-radius:12px;
+  background:#fff;
+  color:#b11212;
+  border:1px solid #e0c5c5;
+  font-size:20px;
+  font-weight:900;
+  cursor:pointer;
+}
+.remove-option-btn:disabled{
+  opacity:.35;
+  cursor:not-allowed;
+}
+.add-option-btn{
+  background:#fff;
+  border:1px dashed #0c4b86;
+  color:#0c4b86;
+  font-weight:900;
+  cursor:pointer;
+  margin:0 0 14px;
+}
+.add-option-btn:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+@media (max-width:1200px){
+  .app{flex-direction:column}
+  .panel{width:100%;position:static;max-height:none}
+}
+
+/* v39: 포터 II 이미지 위치 보정 */
+.car-image[src*="porter2_"]{
+  width:640px;
+  top:260px;
+}
+
