@@ -257,6 +257,19 @@ input,select,button{width:100%;border:1px solid #cdd4d8;border-radius:12px;paddi
   font-weight:900;
   cursor:pointer;
 }
+.custom-option-panel input[type="text"],
+.custom-option-panel input[type="file"]{
+  width:100%;
+  box-sizing:border-box;
+  padding:8px 10px;
+  border-radius:8px;
+  border:1px solid #ddd;
+  font-size:13px;
+  background:#fff;
+}
+.custom-option-panel input[type="text"]::placeholder{
+  color:#999;
+}
 .remove-option-btn:disabled{
   opacity:.35;
   cursor:not-allowed;

@@ -17,6 +17,9 @@ const fields = {
 
 let optionCount = 0;
 const maxOptionCount = 8;
+const CUSTOM_OPTION_VALUE_PREFIX = "__custom__";
+// 사용자가 직접 추가한 옵션 데이터 저장소: { [customKey]: { name, desc, image(dataURL) } }
+const customOptionsData = {};
 
 function optionSelects() {
   return Array.from(document.querySelectorAll(".option-select"));
@@ -62,7 +65,12 @@ function currentColors() { return currentTrim()?.colors || currentFuel()?.colors
 
 function isLeaseVehicle() {
   const carName = fields.car.value || "";
-  return carName.includes("포터");
+  if (carName.includes("포터")) return true;
+  if (carName.includes("스타리아")) {
+    const trimName = (fields.trim && fields.trim.value) || "";
+    if (trimName.includes("카고")) return true;
+  }
+  return false;
 }
 
 function refreshRentLabel() {
@@ -116,15 +124,24 @@ function renderOptionInputs(selectedValues = []) {
     select.id = `option${i}Select`;
     fillSelect(select, optionNames, true, (item) => (item.includes("·") ? item.split("·").pop() : item));
 
-    if (selectedValues[i - 1] && optionNames.includes(selectedValues[i - 1])) {
+    // "직접 입력" 항목 추가 (이 옵션 슬롯 전용 커스텀 키)
+    const customKey = `${CUSTOM_OPTION_VALUE_PREFIX}${i}`;
+    const customOpt = document.createElement("option");
+    customOpt.value = customKey;
+    customOpt.textContent = "➕ 직접 입력";
+    select.appendChild(customOpt);
+
+    const isCustomSelected = selectedValues[i - 1] === customKey;
+
+    if (isCustomSelected) {
+      select.value = customKey;
+    } else if (selectedValues[i - 1] && optionNames.includes(selectedValues[i - 1])) {
       select.value = selectedValues[i - 1];
     } else if (i === 1 && optionNames.length) {
       select.value = optionNames[0];
     } else {
       select.value = "미선택";
     }
-
-    select.addEventListener("input", applyPreview);
 
     label.appendChild(span);
     label.appendChild(select);
@@ -136,6 +153,7 @@ function renderOptionInputs(selectedValues = []) {
     removeBtn.title = "옵션 삭제";
     removeBtn.disabled = false;
     removeBtn.addEventListener("click", () => {
+      delete customOptionsData[customKey];
       const currentValues = optionSelects().map((s) => s.value);
       currentValues.splice(i - 1, 1);
       optionCount = Math.max(0, optionCount - 1);
@@ -146,6 +164,69 @@ function renderOptionInputs(selectedValues = []) {
     row.appendChild(label);
     row.appendChild(removeBtn);
     wrap.appendChild(row);
+
+    // 커스텀 입력 패널 (옵션명 / 옵션 설명 / 이미지 업로드)
+    const customPanel = document.createElement("div");
+    customPanel.className = "custom-option-panel";
+    customPanel.style.display = isCustomSelected ? "flex" : "none";
+    customPanel.style.flexDirection = "column";
+    customPanel.style.gap = "6px";
+    customPanel.style.margin = "6px 0 10px";
+    customPanel.style.padding = "10px";
+    customPanel.style.border = "1px dashed #c9c9c9";
+    customPanel.style.borderRadius = "8px";
+
+    const nameInput = document.createElement("input");
+    nameInput.type = "text";
+    nameInput.placeholder = "옵션 이름";
+    nameInput.value = customOptionsData[customKey]?.name || "";
+
+    const descInput = document.createElement("input");
+    descInput.type = "text";
+    descInput.placeholder = "옵션 설명";
+    descInput.value = customOptionsData[customKey]?.desc || "";
+
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "image/*";
+
+    const ensureCustomEntry = () => {
+      if (!customOptionsData[customKey]) {
+        customOptionsData[customKey] = { name: "", desc: "", image: "" };
+      }
+      return customOptionsData[customKey];
+    };
+
+    nameInput.addEventListener("input", () => {
+      ensureCustomEntry().name = nameInput.value;
+      applyPreview();
+    });
+    descInput.addEventListener("input", () => {
+      ensureCustomEntry().desc = descInput.value;
+      applyPreview();
+    });
+    fileInput.addEventListener("change", () => {
+      const file = fileInput.files && fileInput.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        ensureCustomEntry().image = reader.result;
+        applyPreview();
+      };
+      reader.readAsDataURL(file);
+    });
+
+    customPanel.appendChild(nameInput);
+    customPanel.appendChild(descInput);
+    customPanel.appendChild(fileInput);
+    wrap.appendChild(customPanel);
+
+    select.addEventListener("input", () => {
+      const showCustom = select.value === customKey;
+      customPanel.style.display = showCustom ? "flex" : "none";
+      if (showCustom) ensureCustomEntry();
+      applyPreview();
+    });
   }
 
   $("addOptionBtn").disabled = optionCount >= maxOptionCount;
@@ -216,8 +297,21 @@ function applyPreview() {
       continue;
     }
 
-    const data = optionLibrary[name];
     card.classList.remove("hidden");
+
+    if (name.startsWith(CUSTOM_OPTION_VALUE_PREFIX)) {
+      // 사용자가 직접 추가한 옵션
+      const custom = customOptionsData[name] || {};
+      img.src = custom.image || "";
+      const displayName = custom.name || "직접 입력 옵션";
+      img.alt = displayName;
+      title.textContent = displayName;
+      desc.textContent = custom.desc || "";
+      desc.style.display = custom.desc ? "" : "none";
+      continue;
+    }
+
+    const data = optionLibrary[name];
 
     const optionKey = `${fields.car.value}|${fields.fuel.value}|${fields.trim.value}`;
     const overrideImage = trimOptionImageOverrides?.[optionKey]?.[name];
