@@ -241,10 +241,11 @@ function refreshTrimData() {
     renderOptionInputs([]);
     return;
   }
-  fields.price.value = trim.price || "";
-  if (trim.defaultResidual) fields.residual.value = trim.defaultResidual;
-  if (trim.defaultDeposit) fields.deposit.value = trim.defaultDeposit;
-  if (trim.defaultRent) fields.rent.value = trim.defaultRent;
+  // 차량가격/만기인수가/보증금/월렌트료는 자동입력하지 않고 빈칸으로 유지 (직접 입력 유도)
+  fields.price.value = "";
+  fields.residual.value = "";
+  fields.deposit.value = "";
+  fields.rent.value = "";
 
   refreshColor();
   optionCount = 0;
