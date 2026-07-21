@@ -3123,7 +3123,7 @@ const optionLibrary = {
   },
   "빌트인 캠 2, 증강현실 내비게이션": {
     "price": "450,000원",
-    "image": "images/options/smart_sense1.jpg",
+    "image": "images/options/sonata/빌트인_캠_2_증강현실_내비게이션_공용.avif",
     "desc": "고해상도 전용 전·후방 카메라로 주/야간 화질이 우수하며 음성 녹음, 대용량 외장 메모리, OTA 기능, 차량 주행 정보 저장 및 재생 기능(지도 연동 등)이 적용되었습니다. 블루링크를 통해 주차 및 충격 감지 저장 영상 전송 및 빌트인 캠 상태 정보도 제공합니다."
   },
   "플래티넘Ⅰ": {
@@ -3173,7 +3173,7 @@ const optionLibrary = {
   },
   "빌트인 캠 2 + 증강현실 내비게이션": {
     "price": "420,000원",
-    "image": "images/options/smart_sense1.jpg",
+    "image": "images/options/sonata/빌트인_캠_2_증강현실_내비게이션_공용.avif",
     "desc": "고해상도 전용 전·후방 카메라로 주/야간 화질이 우수하며 음성 녹음, 대용량 외장 메모리, OTA 기능, 차량 주행 정보 저장 및 재생 기능(지도 연동 등)이 적용되었습니다. 블루링크를 통해 주차 및 충격 감지 저장 영상 전송 및 빌트인 캠 상태 정보도 제공합니다."
   },
   "컨비니언스": {
@@ -7650,12 +7650,10 @@ const optionLibrary = {
 
 const trimOptionImageOverrides = {
   "쏘나타 디 엣지|가솔린 2.0|에스": {
-    "빌트인 캠 2, 증강현실 내비게이션": "images/options/sonata/가솔린_2_0_에스_빌트인 캠 2, 증강현실 내비게이션.avif",
     "익스테리어 디자인Ⅰ": "images/options/sonata/가솔린_2_0_에스_익스테리어 디자인Ⅰ.avif",
     "파킹 어시스트Ⅰ": "images/options/sonata/가솔린_2_0_에스_파킹 어시스트Ⅰ.avif"
   },
   "쏘나타 디 엣지|가솔린 2.0|프리미엄": {
-    "빌트인 캠 2, 증강현실 내비게이션": "images/options/sonata/가솔린_2_0_프리미엄_빌트인 캠 2, 증강현실 내비게이션.avif",
     "익스테리어 디자인Ⅰ": "images/options/sonata/가솔린_2_0_프리미엄_익스테리어 디자인Ⅰ.avif",
     "컴포트Ⅰ": "images/options/g20_premium_comfort1.jpg",
     "컴포트Ⅱ": "images/options/g20_premium_comfort2.jpg",
@@ -7674,7 +7672,6 @@ const trimOptionImageOverrides = {
     "현대 스마트센스Ⅱ": "images/options/lpi_business1_smart_sense2.jpg"
   },
   "쏘나타 디 엣지|렌터카 LPG|비즈니스2": {
-    "빌트인 캠 2 + 증강현실 내비게이션": "images/options/lpi_business2_builtin_cam2.jpg",
     "컴포트Ⅲ": "images/options/lpi_business2_comfort3.jpg",
     "파노라마 선루프": "images/options/lpi_business2_panorama_sunroof.jpg",
     "플래티넘Ⅱ": "images/options/lpi_business2_platinum2.jpg",
@@ -7682,20 +7679,17 @@ const trimOptionImageOverrides = {
   },
   "쏘나타 디 엣지|가솔린 1.6 터보|에스": {
     "파킹 어시스트Ⅰ": "images/options/sonata/가솔린_1_6_터보_에스_파킹 어시스트Ⅰ.avif",
-    "익스테리어 디자인Ⅰ": "images/options/sonata/가솔린_1_6_터보_에스_익스테리어 디자인Ⅰ.avif",
-    "빌트인 캠 2, 증강현실 내비게이션": "images/options/sonata/가솔린_1_6_터보_에스_빌트인 캠 2, 증강현실 내비게이션.avif"
+    "익스테리어 디자인Ⅰ": "images/options/sonata/가솔린_1_6_터보_에스_익스테리어 디자인Ⅰ.avif"
   },
   "쏘나타 디 엣지|가솔린 1.6 터보|익스클루시브": {
     "파노라마 선루프": "images/options/sonata/가솔린_1_6_터보_익스클루시브_파노라마 선루프.avif",
     "익스테리어 디자인Ⅰ": "images/options/sonata/가솔린_1_6_터보_익스클루시브_익스테리어 디자인Ⅰ.avif",
     "플래티넘Ⅰ": "images/options/sonata/가솔린_1_6_터보_익스클루시브_플래티넘Ⅰ.avif",
-    "컴포트Ⅱ(2열 편의)": "images/options/sonata/가솔린_1_6_터보_익스클루시브_컴포트Ⅱ(2열 편의).avif",
-    "빌트인 캠 2, 증강현실 내비게이션": "images/options/sonata/가솔린_1_6_터보_익스클루시브_빌트인 캠 2, 증강현실 내비게이션.avif"
+    "컴포트Ⅱ(2열 편의)": "images/options/sonata/가솔린_1_6_터보_익스클루시브_컴포트Ⅱ(2열 편의).avif"
   },
   "쏘나타 디 엣지|가솔린 1.6 터보|인스퍼레이션": {
     "파노라마 선루프": "images/options/sonata/가솔린_1_6_터보_인스퍼레이션_파노라마 선루프.avif",
-    "BOSE 프리미엄 사운드": "images/options/sonata/가솔린_1_6_터보_인스퍼레이션_BOSE 프리미엄 사운드(12스피커, 외장앰프).avif",
-    "빌트인 캠 2, 증강현실 내비게이션": "images/options/sonata/가솔린_1_6_터보_인스퍼레이션_빌트인 캠 2, 증강현실 내비게이션.avif"
+    "BOSE 프리미엄 사운드": "images/options/sonata/가솔린_1_6_터보_인스퍼레이션_BOSE 프리미엄 사운드(12스피커, 외장앰프).avif"
   },
   "쏘나타 디 엣지|가솔린 1.6 터보|프리미엄": {
     "컴포트Ⅰ(1열 편의)": "images/options/sonata/가솔린_1_6_터보_프리미엄_컴포트Ⅰ(1열 편의).avif",
@@ -7704,8 +7698,7 @@ const trimOptionImageOverrides = {
     "현대 스마트센스Ⅰ": "images/options/sonata/가솔린_1_6_터보_프리미엄_현대 스마트센스Ⅰ.avif",
     "컴포트Ⅱ(2열 편의)": "images/options/sonata/가솔린_1_6_터보_프리미엄_컴포트Ⅱ(2열 편의).avif",
     "인포테인먼트 내비Ⅰ": "images/options/sonata/가솔린_1_6_터보_프리미엄_인포테인먼트 내비 I.jpg",
-    "파킹 어시스트Ⅰ": "images/options/sonata/가솔린_1_6_터보_프리미엄_파킹 어시스트Ⅰ.avif",
-    "빌트인 캠 2, 증강현실 내비게이션": "images/options/sonata/가솔린_1_6_터보_프리미엄_빌트인 캠 2, 증강현실 내비게이션.avif"
+    "파킹 어시스트Ⅰ": "images/options/sonata/가솔린_1_6_터보_프리미엄_파킹 어시스트Ⅰ.avif"
   },
   "쏘나타 디 엣지|가솔린 2.0|익스클루시브": {
     "파노라마 선루프": "images/options/sonata/가솔린_2_0_익스클루시브_파노라마 선루프.avif",
@@ -7715,8 +7708,7 @@ const trimOptionImageOverrides = {
   },
   "쏘나타 디 엣지|가솔린 2.0|인스퍼레이션": {
     "파노라마 선루프": "images/options/sonata/가솔린_2_0_인스퍼레이션_파노라마 선루프.avif",
-    "BOSE 프리미엄 사운드": "images/options/sonata/가솔린_2_0_인스퍼레이션_BOSE 프리미엄 사운드(12스피커, 외장앰프).avif",
-    "빌트인 캠 2, 증강현실 내비게이션": "images/options/sonata/가솔린_2_0_인스퍼레이션_빌트인 캠 2, 증강현실 내비게이션.avif"
+    "BOSE 프리미엄 사운드": "images/options/sonata/가솔린_2_0_인스퍼레이션_BOSE 프리미엄 사운드(12스피커, 외장앰프).avif"
   },
   "쏘나타 디 엣지|렌터카 LPG|Business 1": {
     "컴포트Ⅰ(1열 편의)": "images/options/sonata/렌터카_LPG_Business_1_컴포트Ⅰ(1열 편의).avif",
@@ -7729,11 +7721,9 @@ const trimOptionImageOverrides = {
     "파노라마 선루프": "images/options/sonata/렌터카_LPG_Business_2_파노라마 선루프.avif",
     "컴포트Ⅲ(2열 편의)": "images/options/sonata/렌터카_LPG_Business_2_컴포트Ⅲ(2열 편의).avif",
     "현대 스마트센스Ⅱ": "images/options/sonata/렌터카_LPG_Business_2_현대 스마트센스Ⅱ.avif",
-    "빌트인 캠 2 + 증강현실 내비게이션": "images/options/sonata/렌터카_LPG_Business_2_빌트인 캠 2.avif",
     "플래티넘Ⅱ": "images/options/sonata/렌터카_LPG_Business_2_플래티넘Ⅱ.avif"
   },
   "쏘나타 디 엣지|하이브리드|에스": {
-    "빌트인 캠 2, 증강현실 내비게이션": "images/options/sonata/하이브리드_에스_빌트인 캠 2, 증강현실 내비게이션.avif",
     "익스테리어 디자인Ⅲ": "images/options/sonata/하이브리드_에스_익스테리어 디자인Ⅲ.avif",
     "파킹 어시스트Ⅰ": "images/options/sonata/하이브리드_에스_파킹 어시스트Ⅰ.avif"
   },
@@ -7744,11 +7734,9 @@ const trimOptionImageOverrides = {
     "컴포트Ⅱ(2열 편의)": "images/options/sonata/하이브리드_프리미엄_컴포트Ⅱ(2열 편의).avif",
     "하이패스": "images/options/sonata/하이브리드_프리미엄_하이패스.avif",
     "현대 스마트센스Ⅰ": "images/options/sonata/하이브리드_프리미엄_현대 스마트센스Ⅰ.avif",
-    "파킹 어시스트Ⅰ": "images/options/sonata/하이브리드_프리미엄_파킹 어시스트Ⅰ.avif",
-    "빌트인 캠 2, 증강현실 내비게이션": "images/options/sonata/하이브리드_프리미엄_빌트인 캠 2, 증강현실 내비게이션.avif"
+    "파킹 어시스트Ⅰ": "images/options/sonata/하이브리드_프리미엄_파킹 어시스트Ⅰ.avif"
   },
   "쏘나타 디 엣지|하이브리드|익스클루시브": {
-    "빌트인 캠 2, 증강현실 내비게이션": "images/options/sonata/하이브리드_익스클루시브_빌트인 캠 2, 증강현실 내비게이션.avif",
     "익스테리어 디자인Ⅰ": "images/options/sonata/하이브리드_익스클루시브_익스테리어 디자인Ⅰ.avif",
     "컴포트Ⅱ(2열 편의)": "images/options/sonata/하이브리드_익스클루시브_컴포트Ⅱ(2열 편의).avif",
     "파노라마 선루프": "images/options/sonata/하이브리드_익스클루시브_파노라마 선루프.avif",
@@ -7756,7 +7744,6 @@ const trimOptionImageOverrides = {
   },
   "쏘나타 디 엣지|하이브리드|인스퍼레이션": {
     "BOSE 프리미엄 사운드": "images/options/sonata/하이브리드_인스퍼레이션_BOSE 프리미엄 사운드(12스피커, 외장앰프).avif",
-    "빌트인 캠 2, 증강현실 내비게이션": "images/options/sonata/하이브리드_인스퍼레이션_빌트인 캠 2, 증강현실 내비게이션.avif",
     "파노라마 선루프": "images/options/sonata/하이브리드_인스퍼레이션_파노라마 선루프.avif"
   }
 };
