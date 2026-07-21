@@ -7655,11 +7655,11 @@ const trimOptionImageOverrides = {
     "파킹 어시스트Ⅰ": "images/options/sonata/가솔린_2_0_에스_파킹 어시스트Ⅰ.avif"
   },
   "쏘나타 디 엣지|가솔린 2.0|프리미엄": {
-    "빌트인 캠 2, 증강현실 내비게이션": "images/options/g20_premium_builtin_cam_ar.jpg",
+    "빌트인 캠 2, 증강현실 내비게이션": "images/options/sonata/가솔린_2_0_프리미엄_빌트인 캠 2, 증강현실 내비게이션.avif",
     "익스테리어 디자인Ⅰ": "images/options/sonata/가솔린_2_0_프리미엄_익스테리어 디자인Ⅰ.avif",
     "컴포트Ⅰ": "images/options/g20_premium_comfort1.jpg",
     "컴포트Ⅱ": "images/options/g20_premium_comfort2.jpg",
-    "파킹 어시스트Ⅰ": "images/options/g20_premium_parking_assist1.jpg",
+    "파킹 어시스트Ⅰ": "images/options/sonata/가솔린_2_0_프리미엄_파킹 어시스트Ⅰ.avif",
     "하이패스": "images/options/sonata/가솔린_2_0_프리미엄_하이패스.avif",
     "현대 스마트센스Ⅰ": "images/options/sonata/가솔린_2_0_프리미엄_현대 스마트센스Ⅰ.avif",
     "컴포트Ⅰ(1열 편의)": "images/options/sonata/가솔린_2_0_프리미엄_컴포트Ⅰ(1열 편의).avif",
@@ -7703,7 +7703,9 @@ const trimOptionImageOverrides = {
     "익스테리어 디자인Ⅰ": "images/options/sonata/가솔린_1_6_터보_프리미엄_익스테리어 디자인Ⅰ.avif",
     "현대 스마트센스Ⅰ": "images/options/sonata/가솔린_1_6_터보_프리미엄_현대 스마트센스Ⅰ.avif",
     "컴포트Ⅱ(2열 편의)": "images/options/sonata/가솔린_1_6_터보_프리미엄_컴포트Ⅱ(2열 편의).avif",
-    "인포테인먼트 내비Ⅰ": "images/options/sonata/가솔린_1_6_터보_프리미엄_인포테인먼트 내비 I.jpg"
+    "인포테인먼트 내비Ⅰ": "images/options/sonata/가솔린_1_6_터보_프리미엄_인포테인먼트 내비 I.jpg",
+    "파킹 어시스트Ⅰ": "images/options/sonata/가솔린_1_6_터보_프리미엄_파킹 어시스트Ⅰ.avif",
+    "빌트인 캠 2, 증강현실 내비게이션": "images/options/sonata/가솔린_1_6_터보_프리미엄_빌트인 캠 2, 증강현실 내비게이션.avif"
   },
   "쏘나타 디 엣지|가솔린 2.0|익스클루시브": {
     "파노라마 선루프": "images/options/sonata/가솔린_2_0_익스클루시브_파노라마 선루프.avif",
@@ -7741,7 +7743,9 @@ const trimOptionImageOverrides = {
     "컴포트Ⅰ(1열 편의)": "images/options/sonata/하이브리드_프리미엄_컴포트Ⅰ(1열 편의).avif",
     "컴포트Ⅱ(2열 편의)": "images/options/sonata/하이브리드_프리미엄_컴포트Ⅱ(2열 편의).avif",
     "하이패스": "images/options/sonata/하이브리드_프리미엄_하이패스.avif",
-    "현대 스마트센스Ⅰ": "images/options/sonata/하이브리드_프리미엄_현대 스마트센스Ⅰ.avif"
+    "현대 스마트센스Ⅰ": "images/options/sonata/하이브리드_프리미엄_현대 스마트센스Ⅰ.avif",
+    "파킹 어시스트Ⅰ": "images/options/sonata/하이브리드_프리미엄_파킹 어시스트Ⅰ.avif",
+    "빌트인 캠 2, 증강현실 내비게이션": "images/options/sonata/하이브리드_프리미엄_빌트인 캠 2, 증강현실 내비게이션.avif"
   },
   "쏘나타 디 엣지|하이브리드|익스클루시브": {
     "빌트인 캠 2, 증강현실 내비게이션": "images/options/sonata/하이브리드_익스클루시브_빌트인 캠 2, 증강현실 내비게이션.avif",
