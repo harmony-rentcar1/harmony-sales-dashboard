@@ -12,7 +12,9 @@ const fields = {
   deposit: $("depositInput"),
   rent: $("rentInput"),
   rentInputLabel: $("rentInputLabel"),
-  previewRentLabel: $("previewRentLabel")
+  previewRentLabel: $("previewRentLabel"),
+  carNameDisplay: $("carNameDisplayInput"),
+  trimDisplay: $("trimDisplayInput")
 };
 
 let optionCount = 0;
@@ -234,8 +236,11 @@ function renderOptionInputs(selectedValues = []) {
 
 function refreshTrimData() {
   const trim = currentTrim();
+  const fuel = currentFuel();
   if (!trim) {
     fields.price.value = "";
+    fields.carNameDisplay.value = fields.car.value || "";
+    fields.trimDisplay.value = "";
     refreshColor();
     optionCount = 0;
     renderOptionInputs([]);
@@ -246,6 +251,10 @@ function refreshTrimData() {
   fields.residual.value = "";
   fields.deposit.value = "";
   fields.rent.value = "";
+
+  // 표시용 차량명/트림명은 자동 계산값으로 채워두되, 직접 수정 가능
+  fields.carNameDisplay.value = fields.car.value || "";
+  fields.trimDisplay.value = trim.displayTrim || `${fuel?.displayFuel || ""} ${fields.trim.value}`;
 
   refreshColor();
   optionCount = 0;
@@ -267,8 +276,8 @@ function applyPreview() {
   const trim = currentTrim();
 
   $("previewDate").textContent = `기준일자 : ${fields.date.value || ""}`;
-  $("previewCarName").textContent = fields.car.value || "";
-  $("previewTrim").textContent = trim ? (trim.displayTrim || `${fuel?.displayFuel || ""} ${fields.trim.value}`) : "";
+  $("previewCarName").textContent = fields.carNameDisplay.value || fields.car.value || "";
+  $("previewTrim").textContent = fields.trimDisplay.value || "";
   $("previewCarImage").src = currentColors()[fields.color.value] || "";
 
   $("previewPeriod").textContent = fields.period.value;
@@ -336,7 +345,7 @@ function bindEvents() {
   fields.fuel.addEventListener("change", () => { refreshTrim(); applyPreview(); });
   fields.trim.addEventListener("change", () => { refreshTrimData(); applyPreview(); });
 
-  [fields.date, fields.color, fields.period, fields.price, fields.residual, fields.deposit, fields.rent]
+  [fields.date, fields.color, fields.period, fields.price, fields.residual, fields.deposit, fields.rent, fields.carNameDisplay, fields.trimDisplay]
     .forEach((el) => el.addEventListener("input", applyPreview));
 
   $("addOptionBtn").addEventListener("click", () => {
