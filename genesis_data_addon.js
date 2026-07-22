@@ -132,7 +132,7 @@ Object.assign(optionLibrary, {
   },
   "G80·프리뷰 전자제어 서스펜션": {
     "price": "1,100,000원",
-    "image": "images/options/placeholder.jpg",
+    "image": "images/options/genesis_g80_프리뷰_전자제어_서스펜션.avif",
     "desc": "기본 모델 가솔린 2.5 터보 18/19인치 휠&타이어 선택 시 선택 가능"
   },
   "G80·파노라마 선루프": {
@@ -238,12 +238,12 @@ Object.assign(optionLibrary, {
   "GV70·19인치 다크 하이퍼 실버 휠": {
     "price": "가격표 참조",
     "image": "images/options/gv70 19인치 다크 하이퍼 실버 휠.avif",
-    "desc": "휠 옵션 이미지(정확한 가격은 견적서 확인)"
+    "desc": "휠 옵션 이미지"
   },
   "GV70·21인치 다크 스퍼터링 휠": {
     "price": "가격표 참조",
     "image": "images/options/gv70 21인치 다크 스퍼터링 휠.avif",
-    "desc": "스포츠/그래파이트 전용 21인치 휠(엔진·트림별 가격 상이)"
+    "desc": "스포츠/그래파이트 전용 21인치 휠"
   },
   "GV70·빌트인 공기 청정기": {
     "price": "450,000원",
@@ -263,7 +263,7 @@ Object.assign(optionLibrary, {
   "GV70·차량 보호 필름": {
     "price": "450,000원",
     "image": "images/options/gv70 차량 보호 필름.avif",
-    "desc": "프론트/리어 범퍼 사이드 등 스크래치 방지 필름 (보증기간 3년/6만km)"
+    "desc": "프론트/리어 범퍼 사이드 등 스크래치 방지 필름"
   },
   "GV70·플로팅 휠 캡": {
     "price": "90,000원",
@@ -378,7 +378,7 @@ Object.assign(optionLibrary, {
   "GV80·차량 보호 필름": {
     "price": "500,000원",
     "image": "images/options/gv80 차량 보호 필름.avif",
-    "desc": "스톤칩·스크래치 방지 필름 (보증기간 3년/6만km)"
+    "desc": "스톤칩·스크래치 방지 필름"
   },
   "GV80·플로팅 휠 캡": {
     "price": "90,000원",
@@ -468,7 +468,7 @@ Object.assign(optionLibrary, {
   "G80·차량 보호 필름": {
     "price": "450,000원",
     "image": "images/options/g80 차량 보호 필름.avif",
-    "desc": "스톤칩·스크래치 방지 필름 (보증기간 3년/6만km)"
+    "desc": "스톤칩·스크래치 방지 필름"
   },
   "G80·후석 스마트 엔터테인먼트 시스템": {
     "price": "3,000,000원",
@@ -553,7 +553,7 @@ Object.assign(optionLibrary, {
   "G90·차량 보호 필름": {
     "price": "540,000원",
     "image": "images/options/g90 차량 보호 필름.avif",
-    "desc": "스톤칩·스크래치 방지 필름 (보증기간 3년/6만km)"
+    "desc": "스톤칩·스크래치 방지 필름"
   },
   "G90·전동식 후석 스마트 엔터테인먼트 시스템": {
     "price": "3,100,000원",
