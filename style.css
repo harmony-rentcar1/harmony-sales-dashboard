@@ -287,20 +287,6 @@ input,select,button{width:100%;border:1px solid #cdd4d8;border-radius:12px;paddi
   cursor:not-allowed;
 }
 
-@media (max-width:1200px){
-  .app{flex-direction:column}
-  .panel{width:100%;position:static;max-height:none}
-
-  .mobile-tabbar{
-    display:flex;
-    position:sticky;
-    top:0;
-    z-index:100;
-  }
-  .app.show-preview .panel{display:none}
-  .app:not(.show-preview) .preview-wrap{display:none}
-}
-
 .mobile-tabbar{
   display:none;
   gap:0;
@@ -321,6 +307,20 @@ input,select,button{width:100%;border:1px solid #cdd4d8;border-radius:12px;paddi
   background:#fff;
   color:#1a3fae;
   border-bottom:3px solid #1a3fae;
+}
+
+@media (max-width:1200px){
+  .app{flex-direction:column}
+  .panel{width:100%;position:static;max-height:none}
+
+  .mobile-tabbar{
+    display:flex;
+    position:sticky;
+    top:0;
+    z-index:100;
+  }
+  .app.show-preview .panel{display:none}
+  .app:not(.show-preview) .preview-wrap{display:none}
 }
 
 /* v39: 포터 II 이미지 위치 보정 */
