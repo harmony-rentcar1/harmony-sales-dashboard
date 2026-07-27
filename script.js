@@ -382,6 +382,25 @@ function bindEvents() {
     });
   }
 
+  // 모바일 입력/미리보기 탭 전환
+  const appEl = document.querySelector(".app");
+  const tabInputBtn = $("tabInputBtn");
+  const tabPreviewBtn = $("tabPreviewBtn");
+  if (appEl && tabInputBtn && tabPreviewBtn) {
+    tabInputBtn.addEventListener("click", () => {
+      appEl.classList.remove("show-preview");
+      tabInputBtn.classList.add("active");
+      tabPreviewBtn.classList.remove("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    tabPreviewBtn.addEventListener("click", () => {
+      appEl.classList.add("show-preview");
+      tabPreviewBtn.classList.add("active");
+      tabInputBtn.classList.remove("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
   [fields.date, fields.color, fields.period, fields.price, fields.residual, fields.deposit, fields.rent, fields.carNameDisplay, fields.trimDisplay]
     .forEach((el) => el.addEventListener("input", applyPreview));
 
