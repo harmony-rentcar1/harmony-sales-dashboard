@@ -14,8 +14,13 @@ const fields = {
   rentInputLabel: $("rentInputLabel"),
   previewRentLabel: $("previewRentLabel"),
   carNameDisplay: $("carNameDisplayInput"),
-  trimDisplay: $("trimDisplayInput")
+  trimDisplay: $("trimDisplayInput"),
+  registeredCarGroup: $("registeredCarGroup"),
+  customCarImageInput: $("customCarImageInput")
 };
+
+const CUSTOM_CAR_VALUE = "__custom_car__";
+let customCarImageDataUrl = "";
 
 let optionCount = 0;
 const maxOptionCount = 8;
@@ -85,9 +90,23 @@ function refreshRentLabel() {
 function init() {
   fields.date.value = new Date().toISOString().slice(0, 10);
   fillSelect(fields.car, Object.keys(dashboardData.cars));
+  const customCarOpt = document.createElement("option");
+  customCarOpt.value = CUSTOM_CAR_VALUE;
+  customCarOpt.textContent = "➕ 등록되지 않은 차량 직접 입력";
+  fields.car.appendChild(customCarOpt);
+
   refreshFuel();
+  updateCarModeVisibility();
   bindEvents();
   applyPreview();
+}
+
+function updateCarModeVisibility() {
+  const isCustom = fields.car.value === CUSTOM_CAR_VALUE;
+  if (fields.registeredCarGroup) fields.registeredCarGroup.style.display = isCustom ? "none" : "";
+  if (isCustom && fields.carNameDisplay.value === "") {
+    fields.carNameDisplay.value = "";
+  }
 }
 
 function refreshFuel() {
@@ -237,10 +256,11 @@ function renderOptionInputs(selectedValues = []) {
 function refreshTrimData() {
   const trim = currentTrim();
   const fuel = currentFuel();
+  const isCustomCar = fields.car.value === CUSTOM_CAR_VALUE;
   if (!trim) {
     fields.price.value = "";
-    fields.carNameDisplay.value = fields.car.value || "";
-    fields.trimDisplay.value = "";
+    fields.carNameDisplay.value = isCustomCar ? fields.carNameDisplay.value : (fields.car.value || "");
+    fields.trimDisplay.value = isCustomCar ? fields.trimDisplay.value : "";
     refreshColor();
     optionCount = 0;
     renderOptionInputs([]);
@@ -278,7 +298,7 @@ function applyPreview() {
   $("previewDate").textContent = `기준일자 : ${fields.date.value || ""}`;
   $("previewCarName").textContent = fields.carNameDisplay.value || fields.car.value || "";
   $("previewTrim").textContent = fields.trimDisplay.value || "";
-  $("previewCarImage").src = currentColors()[fields.color.value] || "";
+  $("previewCarImage").src = customCarImageDataUrl || currentColors()[fields.color.value] || "";
 
   $("previewPeriod").textContent = fields.period.value;
   $("previewPrice").textContent = formatWon(fields.price.value);
@@ -341,9 +361,26 @@ function applyPreview() {
 }
 
 function bindEvents() {
-  fields.car.addEventListener("change", () => { refreshFuel(); applyPreview(); });
+  fields.car.addEventListener("change", () => {
+    refreshFuel();
+    updateCarModeVisibility();
+    applyPreview();
+  });
   fields.fuel.addEventListener("change", () => { refreshTrim(); applyPreview(); });
   fields.trim.addEventListener("change", () => { refreshTrimData(); applyPreview(); });
+
+  if (fields.customCarImageInput) {
+    fields.customCarImageInput.addEventListener("change", () => {
+      const file = fields.customCarImageInput.files && fields.customCarImageInput.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        customCarImageDataUrl = reader.result;
+        applyPreview();
+      };
+      reader.readAsDataURL(file);
+    });
+  }
 
   [fields.date, fields.color, fields.period, fields.price, fields.residual, fields.deposit, fields.rent, fields.carNameDisplay, fields.trimDisplay]
     .forEach((el) => el.addEventListener("input", applyPreview));

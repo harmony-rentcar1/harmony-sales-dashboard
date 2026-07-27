@@ -12,7 +12,6 @@
   <div class="app">
     <aside class="panel">
       <h1>차량 이미지 제작 대시보드</h1>
-      <p class="sub">차량/유종/트림을 고르면 선택 가능한 옵션이 자동으로 바뀝니다.</p>
 
       <label>
         <span>기준일자</span>
@@ -24,21 +23,30 @@
         <select id="carSelect"></select>
       </label>
 
-      <div class="grid2">
+      <div id="registeredCarGroup">
+        <div class="grid2">
+          <label>
+            <span>엔진</span>
+            <select id="fuelSelect"></select>
+          </label>
+          <label>
+            <span>트림</span>
+            <select id="trimSelect"></select>
+          </label>
+        </div>
+
         <label>
-          <span>엔진</span>
-          <select id="fuelSelect"></select>
-        </label>
-        <label>
-          <span>트림</span>
-          <select id="trimSelect"></select>
+          <span>차량색상</span>
+          <select id="colorSelect"></select>
         </label>
       </div>
 
-      <label>
-        <span>차량색상</span>
-        <select id="colorSelect"></select>
-      </label>
+      <div id="customCarImageGroup">
+        <label>
+          <span>차량 이미지 직접 업로드 (선택 — 업로드하면 그 사진이 우선 적용돼요)</span>
+          <input type="file" id="customCarImageInput" accept="image/*" />
+        </label>
+      </div>
 
       <label>
         <span>표시용 차량명 (직접 수정 가능)</span>
@@ -85,7 +93,6 @@
       <button type="button" class="add-option-btn" id="addOptionBtn">+ 옵션 추가</button>
 
       <button type="button" class="primary-btn" id="downloadBtn">PNG 다운로드</button>
-      <p class="hint">옵션 사진은 <b>images/options</b> 폴더와 <b>data.js</b>의 image 경로로 관리합니다.</p>
     </aside>
 
     <main class="preview-wrap">
