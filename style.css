@@ -338,18 +338,18 @@ input,select,button{width:100%;border:1px solid #cdd4d8;border-radius:12px;paddi
   background:#1a3fae;
   color:#fff;
   font-weight:800;
-  font-size:20px;
+  font-size:11px;
   border:none;
-  border-radius:50%;
-  width:48px;
-  height:48px;
+  border-radius:999px;
   display:flex;
   align-items:center;
-  justify-content:center;
-  padding:0;
+  gap:4px;
+  padding:8px 12px 8px 10px;
   box-shadow:0 6px 16px rgba(26,63,174,0.4);
   cursor:pointer;
+  white-space:nowrap;
 }
+#feedbackFab .fb-icon{font-size:15px; line-height:1;}
 #feedbackFab:hover{background:#152f85;}
 
 .feedback-overlay{
@@ -438,6 +438,7 @@ input,select,button{width:100%;border:1px solid #cdd4d8;border-radius:12px;paddi
 }
 
 @media (max-width:1200px){
-  #feedbackFab{ top:64px; right:12px; width:44px; height:44px; font-size:18px; }
+  #feedbackFab{ top:60px; right:12px; font-size:10px; padding:7px 10px 7px 9px; }
+  #feedbackFab .fb-icon{ font-size:14px; }
 }
 
