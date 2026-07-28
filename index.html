@@ -187,6 +187,35 @@
     </main>
   </div>
 
+  <button type="button" id="feedbackFab" title="피드백 남기기">💬 피드백</button>
+
+  <div id="feedbackOverlay" class="feedback-overlay">
+    <div class="feedback-modal">
+      <button type="button" id="feedbackCloseBtn" class="feedback-close">×</button>
+      <h2>불편한 점 · 아이디어 남기기</h2>
+      <p class="feedback-desc">사용 중 발견한 버그나 추가됐으면 하는 기능을 편하게 남겨주세요.</p>
+
+      <form id="feedbackForm">
+        <label class="fb-label">이름 (선택)</label>
+        <input type="text" id="fbName" class="fb-input" placeholder="예: 김하모니" />
+
+        <label class="fb-label">분류</label>
+        <select id="fbCategory" class="fb-input">
+          <option value="버그 제보">🐞 버그 제보</option>
+          <option value="기능 제안">💡 기능 제안</option>
+          <option value="이미지/데이터 요청">🖼️ 이미지·데이터 요청</option>
+          <option value="기타">✏️ 기타</option>
+        </select>
+
+        <label class="fb-label">내용</label>
+        <textarea id="fbMessage" class="fb-input" rows="4" placeholder="어떤 점이 불편하셨나요?" required></textarea>
+
+        <button type="submit" class="fb-submit" id="fbSubmitBtn">피드백 보내기</button>
+        <p class="fb-status" id="fbStatus"></p>
+      </form>
+    </div>
+  </div>
+
   <script src="data.js"></script>
   <script src="genesis_data_addon.js"></script>
   <script src="script.js"></script>

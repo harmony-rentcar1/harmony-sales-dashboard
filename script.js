@@ -425,4 +425,56 @@ function bindEvents() {
   });
 }
 
+function initFeedbackWidget() {
+  const FEEDBACK_ENDPOINT = "https://script.google.com/macros/s/AKfycbwCVNXa1qfTOPHvKRCML_X_Ia-twYmYsgS3qlOe36Tc3c8oQS3i1NK1tKW1nf2UfNtHOg/exec";
+
+  const fab = $("feedbackFab");
+  const overlay = $("feedbackOverlay");
+  const closeBtn = $("feedbackCloseBtn");
+  const form = $("feedbackForm");
+  const status = $("fbStatus");
+  const submitBtn = $("fbSubmitBtn");
+  if (!fab || !overlay || !form) return;
+
+  const openModal = () => overlay.classList.add("open");
+  const closeModal = () => overlay.classList.remove("open");
+
+  fab.addEventListener("click", openModal);
+  closeBtn.addEventListener("click", closeModal);
+  overlay.addEventListener("click", (e) => { if (e.target === overlay) closeModal(); });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const payload = {
+      name: $("fbName").value.trim(),
+      category: $("fbCategory").value,
+      message: $("fbMessage").value.trim()
+    };
+    if (!payload.message) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "보내는 중...";
+
+    fetch(FEEDBACK_ENDPOINT, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    })
+      .then(() => {
+        status.textContent = "✅ 소중한 의견 감사합니다! 잘 전달됐어요.";
+        form.reset();
+        setTimeout(closeModal, 1400);
+      })
+      .catch(() => {
+        status.textContent = "⚠️ 전송에 실패했어요. 잠시 후 다시 시도해주세요.";
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "피드백 보내기";
+      });
+  });
+}
+
 init();
+initFeedbackWidget();
