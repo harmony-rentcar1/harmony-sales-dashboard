@@ -335,6 +335,7 @@ input,select,button{width:100%;border:1px solid #cdd4d8;border-radius:12px;paddi
   right:16px;
   top:16px;
   z-index:250;
+  width:auto;
   background:#1a3fae;
   color:#fff;
   font-weight:800;
@@ -388,6 +389,7 @@ input,select,button{width:100%;border:1px solid #cdd4d8;border-radius:12px;paddi
 .feedback-close{
   position:absolute;
   top:14px; right:14px;
+  width:auto;
   background:none;
   border:none;
   font-size:22px;
