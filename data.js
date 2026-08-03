@@ -3536,17 +3536,17 @@ const optionLibrary = {
   },
   "PTO(Power Take Off)": {
     "price": "200,000원",
-    "image": "images/options/smart_sense1.jpg",
+    "image": "images/options/porter2/PTO.jpg",
     "desc": ""
   },
   "5단 자동변속기": {
     "price": "1,130,000원",
-    "image": "images/options/smart_sense1.jpg",
+    "image": "images/options/porter2/5단_자동변속기.avif",
     "desc": ""
   },
   "플라스틱 적재함 커버": {
     "price": "630,000원",
-    "image": "images/options/smart_sense1.jpg",
+    "image": "images/options/porter2/플라스틱_적재함_커버.avif",
     "desc": ""
   },
   "멀티미디어 내비플러스Ⅰ": {
