@@ -51,6 +51,28 @@
           <span>차량 이미지 직접 업로드 (선택 — 업로드하면 그 사진이 우선 적용돼요)</span>
           <input type="file" id="customCarImageInput" accept="image/*" />
         </label>
+
+        <div id="customImageAdjustGroup" class="custom-image-adjust" style="display:none">
+          <p class="hint" style="margin-top:0">직접 올린 사진은 원본 구도가 제각각이라 자동으로 위치가 안 맞을 수 있어요. 아래에서 크기·위치를 맞춰보세요.</p>
+          <label>
+            <span>차량 이미지 크기 (<span id="customImageScaleValue">100</span>%)</span>
+            <input type="range" id="customImageScale" min="40" max="180" value="100" />
+          </label>
+          <div class="grid2">
+            <label>
+              <span>좌우 위치</span>
+              <input type="range" id="customImageX" min="-300" max="300" value="0" />
+            </label>
+            <label>
+              <span>상하 위치</span>
+              <input type="range" id="customImageY" min="-250" max="250" value="0" />
+            </label>
+          </div>
+          <div class="grid2">
+            <button type="button" class="secondary-btn" id="resetCustomImagePosBtn">위치 초기화</button>
+            <button type="button" class="secondary-btn" id="clearCustomImageBtn">사진 제거</button>
+          </div>
+        </div>
       </div>
 
       <label>

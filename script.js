@@ -16,7 +16,14 @@ const fields = {
   carNameDisplay: $("carNameDisplayInput"),
   trimDisplay: $("trimDisplayInput"),
   registeredCarGroup: $("registeredCarGroup"),
-  customCarImageInput: $("customCarImageInput")
+  customCarImageInput: $("customCarImageInput"),
+  customImageAdjustGroup: $("customImageAdjustGroup"),
+  customImageScale: $("customImageScale"),
+  customImageScaleValue: $("customImageScaleValue"),
+  customImageX: $("customImageX"),
+  customImageY: $("customImageY"),
+  resetCustomImagePosBtn: $("resetCustomImagePosBtn"),
+  clearCustomImageBtn: $("clearCustomImageBtn")
 };
 
 const CUSTOM_CAR_VALUE = "__custom_car__";
@@ -289,6 +296,37 @@ function getSelectedOptions() {
   return [...new Set(selected)];
 }
 
+function resetCustomImagePosition() {
+  if (fields.customImageScale) fields.customImageScale.value = "100";
+  if (fields.customImageX) fields.customImageX.value = "0";
+  if (fields.customImageY) fields.customImageY.value = "0";
+  if (fields.customImageScaleValue) fields.customImageScaleValue.textContent = "100";
+}
+
+function applyCustomImageTransform() {
+  const img = $("previewCarImage");
+  if (!img) return;
+
+  if (fields.customImageAdjustGroup) {
+    fields.customImageAdjustGroup.style.display = customCarImageDataUrl ? "" : "none";
+  }
+
+  if (!customCarImageDataUrl) {
+    img.style.removeProperty("--car-scale");
+    img.style.removeProperty("--car-x");
+    img.style.removeProperty("--car-y");
+    return;
+  }
+
+  const scale = (Number(fields.customImageScale?.value) || 100) / 100;
+  const x = Number(fields.customImageX?.value) || 0;
+  const y = Number(fields.customImageY?.value) || 0;
+  img.style.setProperty("--car-scale", String(scale));
+  img.style.setProperty("--car-x", `${x}px`);
+  img.style.setProperty("--car-y", `${y}px`);
+  if (fields.customImageScaleValue) fields.customImageScaleValue.textContent = String(fields.customImageScale.value);
+}
+
 function applyPreview() {
   refreshRentLabel();
   const car = currentCar();
@@ -299,6 +337,7 @@ function applyPreview() {
   $("previewCarName").textContent = fields.carNameDisplay.value || fields.car.value || "";
   $("previewTrim").textContent = fields.trimDisplay.value || "";
   $("previewCarImage").src = customCarImageDataUrl || currentColors()[fields.color.value] || "";
+  applyCustomImageTransform();
 
   $("previewPeriod").textContent = fields.period.value;
   $("previewPrice").textContent = formatWon(fields.price.value);
@@ -376,9 +415,32 @@ function bindEvents() {
       const reader = new FileReader();
       reader.onload = () => {
         customCarImageDataUrl = reader.result;
+        resetCustomImagePosition();
         applyPreview();
       };
       reader.readAsDataURL(file);
+    });
+  }
+
+  ["customImageScale", "customImageX", "customImageY"].forEach((key) => {
+    if (fields[key]) {
+      fields[key].addEventListener("input", applyCustomImageTransform);
+    }
+  });
+
+  if (fields.resetCustomImagePosBtn) {
+    fields.resetCustomImagePosBtn.addEventListener("click", () => {
+      resetCustomImagePosition();
+      applyCustomImageTransform();
+    });
+  }
+
+  if (fields.clearCustomImageBtn) {
+    fields.clearCustomImageBtn.addEventListener("click", () => {
+      customCarImageDataUrl = "";
+      if (fields.customCarImageInput) fields.customCarImageInput.value = "";
+      resetCustomImagePosition();
+      applyPreview();
     });
   }
 
