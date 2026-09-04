@@ -113,6 +113,19 @@
       </label>
 
       <div class="option-head">
+        <strong>추가 정보</strong>
+        <small>최대 5개까지 추가할 수 있어요</small>
+      </div>
+
+      <div id="extraInfoList" class="option-input-list extra-info-list"></div>
+      <button type="button" class="add-option-btn" id="addExtraInfoBtn">+ 정보 추가</button>
+
+      <label>
+        <span>추가 정보 글자 크기 (<span id="extraInfoFontSizeValue">24</span>px)</span>
+        <input type="range" id="extraInfoFontSize" min="14" max="34" value="24" />
+      </label>
+
+      <div class="option-head">
         <strong>옵션 선택</strong>
       </div>
 
@@ -133,7 +146,7 @@
           </div>
 
           <div class="price-box">
-            <div class="spec-grid">
+            <div class="spec-grid" id="specGrid">
               <div class="spec-item">
                 <span class="dot"></span><strong>약정기간</strong><span class="spec-value" id="previewPeriod"></span>
               </div>
@@ -143,7 +156,7 @@
               <div class="spec-item">
                 <span class="dot"></span><strong>만기인수가</strong><span class="spec-value" id="previewResidual"></span>
               </div>
-              <div class="spec-item blank"></div>
+              <div class="spec-item blank" id="specBlank"></div>
             </div>
             <div class="rent-strip">
               <div class="rent-item"><strong>보증금</strong><span id="previewDeposit" class="accent"></span></div>

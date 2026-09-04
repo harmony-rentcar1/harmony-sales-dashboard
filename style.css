@@ -290,6 +290,24 @@ input,select,button{width:100%;border:1px solid #cdd4d8;border-radius:12px;paddi
   cursor:not-allowed;
 }
 
+/* 추가 정보(커스텀 스펙) 입력 행 */
+.extra-info-row{
+  display:grid;
+  grid-template-columns:1fr 1fr auto;
+  gap:8px;
+  align-items:end;
+  margin-bottom:14px;
+}
+.extra-info-row label{margin-bottom:0}
+
+/* 미리보기에 삽입되는 커스텀 스펙 항목 (긴 텍스트도 줄바꿈되도록 완화) */
+.spec-item.custom-spec-item strong,
+.spec-item.custom-spec-item .spec-value{
+  white-space:normal;
+  word-break:keep-all;
+}
+.spec-item.custom-spec-item{font-size:var(--custom-spec-font-size, 24px)}
+
 .mobile-tabbar{
   display:none;
   gap:0;

@@ -35,6 +35,11 @@ const CUSTOM_OPTION_VALUE_PREFIX = "__custom__";
 // 사용자가 직접 추가한 옵션 데이터 저장소: { [customKey]: { name, desc, image(dataURL) } }
 const customOptionsData = {};
 
+// 가격 정보 영역(약정기간/차량가격/만기인수가) 아래에 직접 추가하는 커스텀 항목
+let extraInfoCount = 0;
+const maxExtraInfoCount = 5;
+const extraInfoData = []; // [{ label, value }]
+
 function optionSelects() {
   return Array.from(document.querySelectorAll(".option-select"));
 }
@@ -104,6 +109,7 @@ function init() {
 
   refreshFuel();
   updateCarModeVisibility();
+  renderExtraInfoInputs();
   bindEvents();
   applyPreview();
 }
@@ -260,6 +266,68 @@ function renderOptionInputs(selectedValues = []) {
   $("addOptionBtn").disabled = optionCount >= maxOptionCount;
 }
 
+function renderExtraInfoInputs() {
+  const wrap = $("extraInfoList");
+  if (!wrap) return;
+  wrap.innerHTML = "";
+
+  for (let i = 0; i < extraInfoCount; i++) {
+    if (!extraInfoData[i]) extraInfoData[i] = { label: "", value: "" };
+    const entry = extraInfoData[i];
+
+    const row = document.createElement("div");
+    row.className = "extra-info-row";
+
+    const labelWrap = document.createElement("label");
+    const labelSpan = document.createElement("span");
+    labelSpan.textContent = `항목명 ${i + 1}`;
+    const labelInput = document.createElement("input");
+    labelInput.type = "text";
+    labelInput.placeholder = "예: 인수조건";
+    labelInput.value = entry.label;
+    labelInput.addEventListener("input", () => {
+      entry.label = labelInput.value;
+      applyPreview();
+    });
+    labelWrap.appendChild(labelSpan);
+    labelWrap.appendChild(labelInput);
+
+    const valueWrap = document.createElement("label");
+    const valueSpan = document.createElement("span");
+    valueSpan.textContent = `내용 ${i + 1}`;
+    const valueInput = document.createElement("input");
+    valueInput.type = "text";
+    valueInput.placeholder = "예: 협의가능";
+    valueInput.value = entry.value;
+    valueInput.addEventListener("input", () => {
+      entry.value = valueInput.value;
+      applyPreview();
+    });
+    valueWrap.appendChild(valueSpan);
+    valueWrap.appendChild(valueInput);
+
+    const removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.className = "remove-option-btn";
+    removeBtn.textContent = "×";
+    removeBtn.title = "항목 삭제";
+    removeBtn.addEventListener("click", () => {
+      extraInfoData.splice(i, 1);
+      extraInfoCount = Math.max(0, extraInfoCount - 1);
+      renderExtraInfoInputs();
+      applyPreview();
+    });
+
+    row.appendChild(labelWrap);
+    row.appendChild(valueWrap);
+    row.appendChild(removeBtn);
+    wrap.appendChild(row);
+  }
+
+  const addBtn = $("addExtraInfoBtn");
+  if (addBtn) addBtn.disabled = extraInfoCount >= maxExtraInfoCount;
+}
+
 function refreshTrimData() {
   const trim = currentTrim();
   const fuel = currentFuel();
@@ -327,6 +395,34 @@ function applyCustomImageTransform() {
   if (fields.customImageScaleValue) fields.customImageScaleValue.textContent = String(fields.customImageScale.value);
 }
 
+function renderExtraSpecItems() {
+  const grid = $("specGrid");
+  const blank = $("specBlank");
+  if (!grid) return;
+
+  // 이전에 삽입해둔 커스텀 항목 제거 후 다시 그리기
+  grid.querySelectorAll(".custom-spec-item").forEach((el) => el.remove());
+
+  const filled = extraInfoData
+    .slice(0, maxExtraInfoCount)
+    .filter((entry) => entry && (entry.label.trim() || entry.value.trim()));
+
+  if (blank) blank.style.display = filled.length ? "none" : "";
+
+  const fontSizeEl = $("extraInfoFontSize");
+  const fontSize = fontSizeEl ? `${fontSizeEl.value}px` : "24px";
+  grid.style.setProperty("--custom-spec-font-size", fontSize);
+
+  filled.forEach((entry) => {
+    const item = document.createElement("div");
+    item.className = "spec-item custom-spec-item";
+    item.innerHTML = `<span class="dot"></span><strong></strong><span class="spec-value"></span>`;
+    item.querySelector("strong").textContent = entry.label.trim();
+    item.querySelector(".spec-value").textContent = entry.value.trim();
+    grid.appendChild(item);
+  });
+}
+
 function applyPreview() {
   refreshRentLabel();
   const car = currentCar();
@@ -344,6 +440,8 @@ function applyPreview() {
   $("previewResidual").textContent = formatWon(fields.residual.value);
   $("previewDeposit").textContent = formatWon(fields.deposit.value);
   $("previewRent").textContent = formatWon(fields.rent.value);
+
+  renderExtraSpecItems();
 
   const chosen = getSelectedOptions();
 
@@ -473,6 +571,25 @@ function bindEvents() {
     renderOptionInputs(currentValues);
     applyPreview();
   });
+
+  const addExtraInfoBtn = $("addExtraInfoBtn");
+  if (addExtraInfoBtn) {
+    addExtraInfoBtn.addEventListener("click", () => {
+      if (extraInfoCount >= maxExtraInfoCount) return;
+      extraInfoCount += 1;
+      renderExtraInfoInputs();
+      applyPreview();
+    });
+  }
+
+  const extraInfoFontSize = $("extraInfoFontSize");
+  const extraInfoFontSizeValue = $("extraInfoFontSizeValue");
+  if (extraInfoFontSize) {
+    extraInfoFontSize.addEventListener("input", () => {
+      if (extraInfoFontSizeValue) extraInfoFontSizeValue.textContent = extraInfoFontSize.value;
+      applyPreview();
+    });
+  }
 
   $("downloadBtn").addEventListener("click", async () => {
     const canvas = await html2canvas($("poster"), {
